@@ -6,12 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET Hello World page. */
-router.get('/helloworld', function(req, res) {
- res.render('helloworld', { title: 'Hello, World!' })
-});
-
-/* GET Userlist page. */
+/*___________________________________________________USERS___________________________________________________*/
+/* GET pour afficher la liste des utilisateurs */
 router.get('/userlist', function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
@@ -22,28 +18,12 @@ router.get('/userlist', function(req, res) {
     });
 });
 
-/* GET Booklist page. */
-router.get('/booklist', function(req, res) {
-    var db = req.db;
-    var collection = db.get('bookcollection');
-    collection.find({},{},function(e,docs){
-        res.render('booklist', {
-            "booklist" : docs
-        });
-    });
-});
-
-/* GET page pour un Nouvel utilisateur. */
+/* GET page pour un nouvel utilisateur. */
 router.get('/newuser', function(req, res) {
     res.render('newuser', { title: 'Add New User' });
 });
 
-/* GET page pour un Nouveau livre. */
-router.get('/newbook', function(req, res) {
-    res.render('newbook', { title: 'Add New Book' });
-});
-
- /* POST pour ajouter un utilisateur */
+/* POST pour ajouter un utilisateur */
 router.post('/adduser', function(req, res) {
 
     // On positionne la variable db sur la base de données
@@ -77,7 +57,25 @@ router.post('/adduser', function(req, res) {
     });
 });
 
-/* POST pour ajouter un utilisateur */
+/*___________________________________________________BOOKS___________________________________________________*/
+/* GET pour afficher la liste des livres */
+router.get('/booklist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('bookcollection');
+    collection.find({},{},function(e,docs){
+        res.render('booklist', {
+            "booklist" : docs
+        });
+    });
+});
+
+/* GET page pour un nouveau livre */
+router.get('/newbook', function(req, res) {
+    res.render('newbook', { title: 'Add New Book' });
+});
+
+
+/* POST pour ajouter un livre */
 router.post('/addbook', function(req, res) {
 
     // On positionne la variable db sur la base de données
@@ -103,7 +101,7 @@ router.post('/addbook', function(req, res) {
 		"bookannee" : bookAnnee,
 		"bookediteur" : bookEditeur,
 		"bookvendeur" : bookVendeur,
-		"bookPrix" : bookPrix		
+		"bookprix" : bookPrix		
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur

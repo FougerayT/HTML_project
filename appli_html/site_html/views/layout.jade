@@ -1,7 +1,27 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		button#btnPage(onclick="newuser()") Nouveau libraire
+		button#btnPage(onclick="listuser()") Liste des libraires
+		button#btnPage(onclick="newbook()") Nouveau livre
+		button#btnPage(onclick="listbook()") Liste des livres
+	body
+		block content
+	
+script.
+	function newuser() {
+		window.location.href = '/newuser'
+	}
+		function listuser() {
+		window.location.href = '/userlist'
+	}
+		function newbook() {
+		window.location.href = '/newbook'
+	}
+		function listbook() {
+		window.location.href = '/booklist'
+	}
+	
+
