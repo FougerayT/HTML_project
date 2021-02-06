@@ -1,7 +1,28 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+
+	head
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		div.banner
+			h1 Lib'Covid
+		div
+			div.button(onclick="newuser()") Nouveau libraire
+			div.button(onclick="listuser()") Liste des libraires
+			div.button(onclick="newbook()") Nouveau livre
+			div.button(onclick="listbook()") Liste des livres
+	body
+		block content
+
+script.
+	function newuser() { 
+		window.location.href = '/newuser'
+	}
+		function listuser() {
+		window.location.href = '/userlist'
+	}
+		function newbook() {
+		window.location.href = '/newbook'
+	}
+		function listbook() {
+		window.location.href = '/booklist'
+	}

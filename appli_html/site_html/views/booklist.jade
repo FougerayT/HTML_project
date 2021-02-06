@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	h1.
+		Book List
+	ul
+		each book, i in booklist
+			nav#header.navbar.navbar-inverse.navbar-fixed_top
+				.container
+					.navbar-header
+						li
+							h2.
+								#{book.booktitre.toUpperCase()}
+							p Auteur :  #{book.bookauteur}
+							p Type :    #{book.booktype}
+							p Année :   #{book.bookannee}
+							p Editeur : #{book.bookediteur}
+							p Vendeur : #{book.bookvendeur}
+							p Prix :    #{book.bookprix} €
+							button#btnPage(onclick="detailsBook()") Détails
+	
+script.
+	function detailsBook() {
+		window.location.href = '/userlist'
+	}
