@@ -6,6 +6,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/login', function(req, res) {
+    res.render('login', { title: 'login' });
+});
+
+router.get('/signup', function(req, res) {
+    res.render('signup', { title: 'signup' });
+});
 /*___________________________________________________USERS___________________________________________________*/
 /* GET pour afficher la liste des utilisateurs */
 router.get('/userlist', function(req, res) {

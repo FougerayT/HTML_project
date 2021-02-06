@@ -11,6 +11,8 @@ html
 			div.button(onclick="listuser()") Liste des libraires
 			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
+			div.button(onclick="login()") Connexion
+			div.button(onclick="signup()") Inscription
 	body
 		block content
 
@@ -29,4 +31,10 @@ script.
 	}
 		function listbook() {
 		window.location.href = '/booklist'
+	}
+		function login() { 
+		window.location.href = '/login'
+	}
+		function signup() { 
+		window.location.href = '/signup'
 	}
