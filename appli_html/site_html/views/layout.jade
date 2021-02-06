@@ -6,6 +6,7 @@ html
 		div.banner
 			h1 Lib'Covid
 		div
+			div.button(onclick="home()") Accueil
 			div.button(onclick="newuser()") Nouveau libraire
 			div.button(onclick="listuser()") Liste des libraires
 			div.button(onclick="newbook()") Nouveau livre
@@ -14,6 +15,9 @@ html
 		block content
 
 script.
+	function home() {
+		window.location.href = '/'
+	}
 	function newuser() { 
 		window.location.href = '/newuser'
 	}

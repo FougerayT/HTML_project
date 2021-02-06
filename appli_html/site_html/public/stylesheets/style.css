@@ -692,6 +692,8 @@
 
 		ul li {
 			padding-left: 0.5em;
+			height:500px;
+			width:200px
 		}
 
 			ul li a{
