@@ -7,6 +7,7 @@ block content
 		each book, i in booklist
 			li.column 
 				h2 #{book.booktitre.toUpperCase()}
+				img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}'  alt='My_Logo')
 				p Auteur :  #{book.bookauteur}
 				p Type :    #{book.booktype}
 				p Année :   #{book.bookannee}
