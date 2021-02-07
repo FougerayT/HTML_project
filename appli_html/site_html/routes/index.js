@@ -20,6 +20,12 @@ router.get('/signup', function(req, res) {
     res.render('signup', { title: 'signup' });
 });
 
+
+/*__________________________________________________RESERVATION__________________________________________________*/
+router.get('/reservation', function(req, res) {
+    res.render('reservation', { title: 'reservation' });
+});
+
 /*___________________________________________________LIBRAIRES___________________________________________________*/
 /* GET pour afficher la liste des libraires */
 router.get('/librairelist', function(req, res) {

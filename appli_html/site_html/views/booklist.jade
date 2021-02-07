@@ -1,8 +1,8 @@
 extends layout
 
 block content
-	h1 Book List
-	button(onclick="sortListDir()") Tri(A-Z)(Z-A)
+	h1 Liste des livres
+	p.button(onclick="sortListDir()") Tri(A-Z)(Z-A)
 	ul#id01.row
 		each book, i in booklist
 			li.column 
@@ -13,4 +13,4 @@ block content
 				p Editeur : #{book.bookediteur}
 				p Vendeur : #{book.bookvendeur}
 				p Prix :    #{book.bookprix} €
-				button#btnPage(onclick="detailsBook()") Détails
+				p.button(onclick="Reservation()") Réserver

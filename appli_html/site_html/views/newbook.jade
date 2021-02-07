@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	h1= title
+	h1 Ajouter un nouveau livre
 	form#formAddBook(name="addbook",method="post",action="/addbook")
 		input#inputbookTitre(type="text", placeholder="booktitre", name="booktitre")
 		input#inputbookAuteur(type="text", placeholder="bookauteur", name="bookauteur")
