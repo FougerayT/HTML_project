@@ -13,53 +13,105 @@ router.get('/login', function(req, res) {
 router.get('/signup', function(req, res) {
     res.render('signup', { title: 'signup' });
 });
-/*___________________________________________________USERS___________________________________________________*/
-/* GET pour afficher la liste des utilisateurs */
-router.get('/userlist', function(req, res) {
+
+/*___________________________________________________LIBRAIRES___________________________________________________*/
+/* GET pour afficher la liste des libraires */
+router.get('/librairelist', function(req, res) {
     var db = req.db;
-    var collection = db.get('usercollection');
+    var collection = db.get('librairecollection');
     collection.find({},{},function(e,docs){
-        res.render('userlist', {
-            "userlist" : docs
+        res.render('librairelist', {
+            "librairelist" : docs
         });
     });
 });
 
-/* GET page pour un nouvel utilisateur. */
-router.get('/newuser', function(req, res) {
-    res.render('newuser', { title: 'Add New User' });
+/* GET page pour un nouvel libraire. */
+router.get('/newlibraire', function(req, res) {
+    res.render('newlibraire', { title: 'Add New Libraire' });
 });
 
-/* POST pour ajouter un utilisateur */
-router.post('/adduser', function(req, res) {
+/* POST pour ajouter un libraire */
+router.post('/addlibraire', function(req, res) {
 
     // On positionne la variable db sur la base de données
     var db = req.db;
 
     // On récupère les données du formulaire
-	var userNom = req.body.usernom;
-	var userPrenom = req.body.userprenom;
-	var userEmail = req.body.useremail;
-	var userSociete = req.body.usersociete;
+	var libraireNom = req.body.librairenom;
+	var librairePrenom = req.body.libraireprenom;
+	var libraireEmail = req.body.libraireemail;
+	var libraireSociete = req.body.librairesociete;
 
     // On récupère la collection
-    var collection = db.get('usercollection');
+    var collection = db.get('librairecollection');
 
 	// On insère les données dans la base
     collection.insert({
-        "usernom" : userNom,
-		"userprenom" : userPrenom,
-        "useremail" : userEmail,
-		"usersociete" : userSociete
+        "librairenom" : libraireNom,
+		"libraireprenom" : librairePrenom,
+        "libraireemail" : libraireEmail,
+		"librairesociete" : libraireSociete
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur
             res.send("Il y a un problème pour insérer les données dans la base.");
         }
         else {
-            // En cas de succès on revient sur la page /userlist
-            res.location("userlist");
-            res.redirect("userlist");
+            // En cas de succès on revient sur la page /librairelist
+            res.location("librairelist");
+            res.redirect("librairelist");
+        }
+    });
+});
+
+/*___________________________________________________CLIENTS___________________________________________________*/
+/* GET pour afficher la liste des clients */
+router.get('/clientlist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('clientcollection');
+    collection.find({},{},function(e,docs){
+        res.render('clientlist', {
+            "clientlist" : docs
+        });
+    });
+});
+
+/* GET page pour un nouvel client. */
+router.get('/newclient', function(req, res) {
+    res.render('newclient', { title: 'Add New Client' });
+});
+
+/* POST pour ajouter un client */
+router.post('/addclient', function(req, res) {
+
+    // On positionne la variable db sur la base de données
+    var db = req.db;
+
+    // On récupère les données du formulaire
+	var clientNom = req.body.clientnom;
+	var clientPrenom = req.body.clientprenom;
+	var clientEmail = req.body.clientemail;
+	var clientSociete = req.body.clientsociete;
+
+    // On récupère la collection
+    var collection = db.get('clientcollection');
+
+	// On insère les données dans la base
+    collection.insert({
+        "clientnom" : clientNom,
+		"clientprenom" : clientPrenom,
+        "clientemail" : clientEmail,
+		"clientsociete" : clientSociete
+    }, function (err, doc) {
+        if (err) {
+            // En cas de problème, on renvoie une erreur
+            res.send("Il y a un problème pour insérer les données dans la base.");
+        }
+        else {
+            // En cas de succès on revient sur la page /clientlist
+            res.location("clientlist");
+            res.redirect("clientlist");
         }
     });
 });

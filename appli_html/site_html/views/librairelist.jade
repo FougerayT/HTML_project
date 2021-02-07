@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Libraire List
+    ul
+        each libraire, i in librairelist
+            li
+                a(href="mailto:#{libraire.libraireemail}")= libraire.librairenom

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1 Remplissez ces informations afin de créer votre compte
+	form#formAddLibraire(name="addlibraire",method="post",action="/addlibraire")
+		input#inputLibraireNom(type="text", placeholder="librairenom", name="librairenom")
+		input#inputLibrairePrenom(type="text", placeholder="libraireprenom", name="libraireprenom")
+		input#inputLibraireEmail(type="text", placeholder="libraireemail", name="libraireemail")
+		input#inputLibraireSociete(type="text", placeholder="librairesociete", name="librairesociete")
+		button#btnSubmit(type="submit") submit 

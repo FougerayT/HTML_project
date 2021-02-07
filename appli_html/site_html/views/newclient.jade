@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1 Remplissez ces informations afin de créer votre compte
+	form#formAddClient(name="addclient",method="post",action="/addclient")
+		input#inputClientNom(type="text", placeholder="clientnom", name="clientnom")
+		input#inputClientPrenom(type="text", placeholder="clientprenom", name="clientprenom")
+		input#inputClientEmail(type="text", placeholder="clientemail", name="clientemail")
+		input#inputClientSociete(type="text", placeholder="clientsociete", name="clientsociete")
+		button#btnSubmit(type="submit") submit 

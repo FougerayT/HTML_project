@@ -7,8 +7,10 @@ html
 			h1 Lib'Covid
 		div
 			div.button(onclick="home()") Accueil
-			div.button(onclick="newuser()") Nouveau libraire
-			div.button(onclick="listuser()") Liste des libraires
+			div.button(onclick="newlibraire()") Nouveau libraire
+			div.button(onclick="listlibraire()") Liste des libraires
+			div.button(onclick="newclient()") Nouveau client
+			div.button(onclick="listclient()") Liste des clients
 			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
 			div.button(onclick="login()") Connexion
@@ -20,11 +22,17 @@ script.
 	function home() {
 		window.location.href = '/'
 	}
-	function newuser() { 
-		window.location.href = '/newuser'
+	function newlibraire() { 
+		window.location.href = '/newlibraire'
 	}
-		function listuser() {
-		window.location.href = '/userlist'
+		function listlibraire() {
+		window.location.href = '/librairelist'
+	}
+	function newclient() { 
+		window.location.href = '/newclient'
+	}
+		function listclient() {
+		window.location.href = '/userclient'
 	}
 		function newbook() {
 		window.location.href = '/newbook'
