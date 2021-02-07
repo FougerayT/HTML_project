@@ -13,8 +13,8 @@ html
 			div.button(onclick="listclient()") Liste des clients
 			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
-			div.button(onclick="login()") Connexion
-			div.button(onclick="signup()") Inscription
+			div(style='position: relative; float: right;').button(onclick="login()") Connexion
+			div(style='position: relative; float: right;').button(onclick="signup()") Inscription
 	body
 		block content
 

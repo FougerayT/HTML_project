@@ -4,5 +4,5 @@ block content
 	h1	 Veuillez vous connectez
 	form#formConnexion(name="addbook",method="post",action="/addbook")
 		input#inputbookTitre(type="text", placeholder="Email", name="email")
-		input#inputbookAuteur(type="text", placeholder="Mot de passe", name="mdp")
-		button#btnSubmit(type="submit") Connexion
+		input#inputbookAuteur(type="password", placeholder="Mot de passe", name="mdp")
+		div.button(onclick="home()") Connexion

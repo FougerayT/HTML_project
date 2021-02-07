@@ -6,12 +6,14 @@ block content
 	ul#id01.row
 		each book, i in booklist
 			li.column 
-				h2 #{book.booktitre.toUpperCase()}
-				img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}'  alt='My_Logo')
-				p Auteur :  #{book.bookauteur}
-				p Type :    #{book.booktype}
-				p Année :   #{book.bookannee}
-				p Editeur : #{book.bookediteur}
-				p Vendeur : #{book.bookvendeur}
-				p Prix :    #{book.bookprix} €
-				p.button(onclick="Reservation()") Réserver
+				.column2
+					h2 #{book.booktitre.toUpperCase()}
+					p Auteur :  #{book.bookauteur}
+					p Type :    #{book.booktype}
+					p Année :   #{book.bookannee}
+					p Editeur : #{book.bookediteur}
+					p Vendeur : #{book.bookvendeur}
+					p Prix :    #{book.bookprix} €
+					p.button(onclick="Reservation()") Réserver
+				.column2
+					img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')
