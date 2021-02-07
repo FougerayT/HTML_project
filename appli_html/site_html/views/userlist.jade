@@ -1,9 +1,17 @@
 extends layout
 
+
+
+
 block content
+    -var image="chat.jpeg"
+
+    h1 #{image}
+    img.logo(src='http://localhost:3000/stylesheets/images/' + '#{image}'  alt='My_Logo')
     h1.
         User List
     ul
         each user, i in userlist
             li
                 a(href="mailto:#{user.useremail}")= user.usernom
+                

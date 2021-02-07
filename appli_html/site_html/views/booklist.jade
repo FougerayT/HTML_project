@@ -1,5 +1,9 @@
 extends layout
 
+
+
+var image ="http://localhost:3000/stylesheets/images/chat.jpeg"
+var myString="giouerbgoebruqigbuierbguioeb	rogbeiogpeg"
 block content
 	h1.
 		Book List
@@ -17,6 +21,16 @@ block content
 							p Editeur : #{book.bookediteur}
 							p Vendeur : #{book.bookvendeur}
 							p Prix :    #{book.bookprix} €
+
+							p Image :    #{book.bookimage}
+							-var image = book.bookimage
+							img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}'  alt='My_Logo')
+
+
+							
+
+
+
 							button#btnPage(onclick="detailsBook()") Détails
 	
 script.

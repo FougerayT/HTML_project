@@ -1,5 +1,12 @@
 var express = require('express');
+const fileUpload = require('express-fileupload')
+const mongodb = require('mongodb')
+const fs = require('fs');
+
+var app = express()
 var router = express.Router();
+const mongoClient = mongodb.MongoClient
+const binary = mongodb.Binary
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -96,6 +103,7 @@ router.post('/addbook', function(req, res) {
 	var bookEditeur = req.body.bookediteur;
 	var bookVendeur = req.body.bookvendeur;
 	var bookPrix = req.body.bookprix;
+    var bookImage = req.body.bookimage;
 
     // On récupère la collection
     var collection = db.get('bookcollection');
@@ -108,7 +116,8 @@ router.post('/addbook', function(req, res) {
 		"bookannee" : bookAnnee,
 		"bookediteur" : bookEditeur,
 		"bookvendeur" : bookVendeur,
-		"bookprix" : bookPrix		
+		"bookprix" : bookPrix,
+        "bookimage" : bookImage
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur
