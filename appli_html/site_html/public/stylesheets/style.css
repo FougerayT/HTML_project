@@ -387,7 +387,7 @@
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
-		width: 100%;
+		width: 40%;
 	}
 
 		input[type="text"]:invalid,
@@ -692,8 +692,6 @@
 
 		ul li {
 			padding-left: 0.5em;
-			height:500px;
-			width:200px
 		}
 
 			ul li a{
@@ -870,6 +868,18 @@
 		dl dd {
 			margin-left: 2em;
 		}
+		
+		.column {
+  float: left;
+  width: 33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /* Table */
 

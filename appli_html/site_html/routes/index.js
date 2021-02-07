@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  var db = req.db;
+    var collection = db.get('bookcollection');
+    collection.find({},{},function(e,docs){
+        res.render('index', {
+            "booklist" : docs
+        });
+    });
 });
 
 router.get('/login', function(req, res) {
