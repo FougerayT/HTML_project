@@ -1,11 +1,11 @@
 extends layout
 
 block content
-	h1.
-		Book List
-	ul.row
+	h1 Book List
+	button(onclick="sortListDir()") Tri(A-Z)(Z-A)
+	ul#id01.row
 		each book, i in booklist
-			li.column
+			li.column 
 				h2 #{book.booktitre.toUpperCase()}
 				p Auteur :  #{book.bookauteur}
 				p Type :    #{book.booktype}
@@ -14,8 +14,3 @@ block content
 				p Vendeur : #{book.bookvendeur}
 				p Prix :    #{book.bookprix} €
 				button#btnPage(onclick="detailsBook()") Détails
-
-script.
-	function detailsBook() {
-		window.location.href = '/userlist'
-	}

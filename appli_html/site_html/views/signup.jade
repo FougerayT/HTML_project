@@ -1,12 +1,12 @@
 extends layout
 
 block content
-	h1  
-	h1	S'inscrire en tant que professionnel : 
-		div.button(onclick="newuser()") Nouveau libraire
+	p
+	h1 S'inscrire en tant que professionnel : 
+		div.button.small(onclick="newuser()") Nouveau libraire
 
 	h1 S'inscrire en tant que client : 
-		div.button(onclick="newuser()") Nouveau client
+		div.button.small(onclick="newuser()") Nouveau client
 script.
 	function newuser() { 
 		window.location.href = '/newuser'
