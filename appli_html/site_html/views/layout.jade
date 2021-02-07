@@ -7,9 +7,7 @@ html
 			h1 Lib'Covid
 		div
 			div.button(onclick="home()") Accueil
-			div.button(onclick="newlibraire()") Nouveau libraire
 			div.button(onclick="listlibraire()") Liste des libraires
-			div.button(onclick="newclient()") Nouveau client
 			div.button(onclick="listclient()") Liste des clients
 			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
@@ -25,24 +23,24 @@ script.
 	function newlibraire() { 
 		window.location.href = '/newlibraire'
 	}
-		function listlibraire() {
+	function listlibraire() {
 		window.location.href = '/librairelist'
 	}
 	function newclient() { 
 		window.location.href = '/newclient'
 	}
-		function listclient() {
-		window.location.href = '/userclient'
+	function listclient() {
+		window.location.href = '/clientlist'
 	}
-		function newbook() {
+	function newbook() {
 		window.location.href = '/newbook'
 	}
-		function listbook() {
+	function listbook() {
 		window.location.href = '/booklist'
 	}
-		function login() { 
+	function login() { 
 		window.location.href = '/login'
 	}
-		function signup() { 
+	function signup() { 
 		window.location.href = '/signup'
 	}
