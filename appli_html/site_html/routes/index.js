@@ -38,20 +38,24 @@ router.post('/addlibraire', function(req, res) {
     var db = req.db;
 
     // On récupère les données du formulaire
-	var libraireNom = req.body.librairenom;
-	var librairePrenom = req.body.libraireprenom;
-	var libraireEmail = req.body.libraireemail;
 	var libraireSociete = req.body.librairesociete;
+	var libraireLogin = req.body.librairelogin;
+	var librairePassword = req.body.librairepassword;
+	var libraireEmail = req.body.libraireemail;
+	var libraireTelephone = req.body.librairetelephone;
+	var libraireAdresse = req.body.libraireadresse;
 
     // On récupère la collection
     var collection = db.get('librairecollection');
 
 	// On insère les données dans la base
     collection.insert({
-        "librairenom" : libraireNom,
-		"libraireprenom" : librairePrenom,
+        "librairesociete" : libraireSociete,
+		"librairelogin" : libraireLogin,
+		"librairepassword" : librairePassword,
         "libraireemail" : libraireEmail,
-		"librairesociete" : libraireSociete
+		"librairetelephone" : libraireTelephone,
+		"libraireadresse" : libraireAdresse
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur
@@ -91,8 +95,11 @@ router.post('/addclient', function(req, res) {
     // On récupère les données du formulaire
 	var clientNom = req.body.clientnom;
 	var clientPrenom = req.body.clientprenom;
+	var clientLogin = req.body.clientlogin;
+	var clientPassword = req.body.clientpassword;
 	var clientEmail = req.body.clientemail;
-	var clientSociete = req.body.clientsociete;
+	var clientTelephone = req.body.clienttelephone;
+	var clientAdresse = req.body.clientadresse;
 
     // On récupère la collection
     var collection = db.get('clientcollection');
@@ -101,8 +108,11 @@ router.post('/addclient', function(req, res) {
     collection.insert({
         "clientnom" : clientNom,
 		"clientprenom" : clientPrenom,
+		"clientlogin" : clientLogin,
+		"clientpassword" : clientPassword,
         "clientemail" : clientEmail,
-		"clientsociete" : clientSociete
+		"clienttelephone" : clientTelephone,
+		"clientadresse" : clientAdresse
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur
