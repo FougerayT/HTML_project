@@ -1,9 +1,12 @@
 extends layout
 
 block content
-    h1.
-        Liste des libraires
-    ul
-        each libraire, i in librairelist
-            li
-                a(href="mailto:#{libraire.libraireemail}")= libraire.librairesociete
+	h1.
+		Liste des libraires
+	ul
+		each libraire, i in librairelist
+			li.column 
+				h2 #{libraire.librairesociete.toUpperCase()}
+				p Adresse :  #{libraire.libraireadresse}
+				p Mail :    #{libraire.libraireemail}
+				p Téléphone :   #{libraire.librairetelephone}
