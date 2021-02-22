@@ -27,7 +27,12 @@ router.get('/reservation', function(req, res) {
 	var titre=req.query.t;
 	var vendeur=req.query.v;
 	var prix=req.query.p;
-    res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix});
+	var db = req.db;
+	var collection = db.get('librairecollection');
+    collection.find({'librairesociete':vendeur},{},function(e,docs){
+        console.log(docs[0].libraireadresse);
+		res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix, "libraire_res": docs[0].libraireadresse});
+    });
 });
 
 /*___________________________________________________LIBRAIRES___________________________________________________*/
