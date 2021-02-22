@@ -6,9 +6,33 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+<<<<<<< Updated upstream
 /*___________________________________________________USERS___________________________________________________*/
 /* GET pour afficher la liste des utilisateurs */
 router.get('/userlist', function(req, res) {
+=======
+router.get('/login', function(req, res) {
+    res.render('login', { title: 'login' });
+});
+
+router.get('/signup', function(req, res) {
+    res.render('signup', { title: 'signup' });
+});
+
+router.post('/login', function(req, res) {
+
+    // On récupère les données du formulaire
+	var test2 = req.body.typeuser;
+	var test8 = test2[0].checked;
+});
+if (document.getElementById('client').checked) {
+ valeur = document.getElementById('choix1').value;
+}
+var test = true;
+/*___________________________________________________LIBRAIRES___________________________________________________*/
+/* GET pour afficher la liste des libraires */
+router.get('/librairelist', function(req, res) {
+>>>>>>> Stashed changes
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){

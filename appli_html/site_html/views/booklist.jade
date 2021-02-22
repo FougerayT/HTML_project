@@ -5,19 +5,17 @@ block content
 		Book List
 	ul
 		each book, i in booklist
-			nav#header.navbar.navbar-inverse.navbar-fixed_top
-				.container
-					.navbar-header
-						li
-							h2.
-								#{book.booktitre.toUpperCase()}
-							p Auteur :  #{book.bookauteur}
-							p Type :    #{book.booktype}
-							p Année :   #{book.bookannee}
-							p Editeur : #{book.bookediteur}
-							p Vendeur : #{book.bookvendeur}
-							p Prix :    #{book.bookprix} €
-							button#btnPage(onclick="detailsBook()") Détails
+			h2.
+				#{book.booktitre}
+			p Auteur :  #{book.bookauteur}
+			p Type :    #{book.booktype}
+			p Année :   #{book.bookannee}
+			p Editeur : #{book.bookediteur}
+			p Vendeur : #{book.bookvendeur}
+			p Prix :    #{book.bookprix} €
+			button#btnPage(onclick="detailsBook()") Détails
+			br
+			img(src='images\0.jpg')
 	
 script.
 	function detailsBook() {

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h1	 Veuillez vous connectez
+	form#formConnexion(name="addbook",method="post",action="/addbook")
+		input#inputLogin(type="text", placeholder="Email", name="email", required='')
+		input#inputPassword(type="password", placeholder="Mot de passe", name="mdp", required='')
+		br
+		input#choiceLibraire(type='radio' name='typeuser' value='libraire', checked '')
+		label(for='choiceLibraire') Libraire
+		br
+		input#choiceClient(type='radio' name='typeuser' value='client')
+		label(for='choiceClient') Client
+		br
+		button#btnSubmit(type="submit") Connexion
+		
