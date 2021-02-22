@@ -2,12 +2,12 @@ extends layout
 
 block content
 	h1 Remplissez ces informations afin de créer votre compte
-	form#formAddClient(name="addclient",method="post",action="/addclient", required='')
-		input#inputClientNom(type="text", placeholder="Nom", name="clientnom", required='')
-		input#inputClientPrenom(type="text", placeholder="Prenom", name="clientprenom", required='')
-		input#inputClientLogin(type="text", placeholder="Login", name="clientlogin", required='')
-		input#inputClientPassword(type="text", placeholder="Password", name="clientpassword", required='')
-		input#inputClientEmail(type="text", placeholder="Email", name="clientemail", required='')
-		input#inputClientTelephone(type="text", placeholder="Telephone", name="clienttelephone", required='')
-		input#inputClientAdresse(type="text", placeholder="Adresse", name="clientadresse", required='')
+	form#formAddClient(name="addclient",method="post",action="/addclient")
+		input#inputClientNom(type="text", placeholder="Nom", name="clientnom")
+		input#inputClientPrenom(type="text", placeholder="Prenom", name="clientprenom")
+		input#inputClientLogin(type="text", placeholder="Login", name="clientlogin")
+		input#inputClientPassword(type="password", placeholder="Mot de passe", name="clientpassword")
+		input#inputClientEmail(type="text", placeholder="Email", name="clientemail")
+		input#inputClientTelephone(type="text", placeholder="Telephone", name="clienttelephone")
+		input#inputClientAdresse(type="text", placeholder="Adresse", name="clientadresse")
 		button#btnSubmit(type="submit") submit 

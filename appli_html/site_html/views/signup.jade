@@ -1,18 +1,9 @@
 extends layout
 
 block content
-	h1
-	div(style='text-align: center;')
-		h1	S'inscrire en tant que professionnel : 
-		div.button(onclick="newlibraire()") Nouveau libraire
-		p
-		h1 S'inscrire en tant que client : 
-		div.button(onclick="newclient()") Nouveau client
-		
-script.
-	function newlibraire() { 
-		window.location.href = '/newlibraire'
-	}
-	function newclient() { 
-		window.location.href = '/newclient'
-	}
+	p
+	h1 S'inscrire en tant que professionnel : 
+		div.button.small(onclick="newlibraire()") Nouveau libraire
+
+	h1 S'inscrire en tant que client : 
+		div.button.small(onclick="newclient()") Nouveau client

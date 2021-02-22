@@ -1,16 +1,18 @@
 extends layout
 
 block content
-	h1= title
+	h1 Ajouter un nouveau livre
 	form#formAddBook(name="addbook",method="post",action="/addbook")
-		input#inputbookTitre(type="text", placeholder="booktitre", name="booktitre", required='')
-		input#inputbookAuteur(type="text", placeholder="bookauteur", name="bookauteur", required='')
-		input#inputbookType(type="text", placeholder="booktype", name="booktype", required='')
-		input#inputbookAnnee(type="text", placeholder="bookannee", name="bookannee", required='')
-		input#inputbookEditeur(type="text", placeholder="bookediteur", name="bookediteur", required='')
-		input#inputbookVendeur(type="text", placeholder="bookvendeur", name="bookvendeur", required='')
-		input#inputbookPrix(type="text", placeholder="bookprix", name="bookprix", required='')
-		button#btnImage(onclick="navigateur()") Image
+		input#inputbookTitre(type="text", placeholder="Titre", name="booktitre")
+		input#inputbookAuteur(type="text", placeholder="Auteur", name="bookauteur")
+		input#inputbookType(type="text", placeholder="Type", name="booktype")
+		input#inputbookAnnee(type="text", placeholder="Annee", name="bookannee")
+		input#inputbookEditeur(type="text", placeholder="Editeur", name="bookediteur")
+		input#inputbookVendeur(type="text", placeholder="Vendeur", name="bookvendeur")
+		input#inputbookPrix(type="text", placeholder="Prix", name="bookprix")
+		input#inputbookPrix(type="text", placeholder="Nom de Image", name="bookimage")
+
+		
 		button#btnSubmit(type="submit") submit
 	
 script.

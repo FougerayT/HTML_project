@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  var db = req.db;
+    var collection = db.get('bookcollection');
+    collection.find({},{},function(e,docs){
+        res.render('index', {
+            "booklist" : docs
+        });
+    });
 });
 
 router.get('/login', function(req, res) {
@@ -12,6 +18,12 @@ router.get('/login', function(req, res) {
 
 router.get('/signup', function(req, res) {
     res.render('signup', { title: 'signup' });
+});
+
+
+/*__________________________________________________RESERVATION__________________________________________________*/
+router.get('/reservation', function(req, res) {
+    res.render('reservation', { title: 'reservation' });
 });
 
 /*___________________________________________________LIBRAIRES___________________________________________________*/
@@ -158,6 +170,8 @@ router.post('/addbook', function(req, res) {
 	var bookEditeur = req.body.bookediteur;
 	var bookVendeur = req.body.bookvendeur;
 	var bookPrix = req.body.bookprix;
+    var bookImage = req.body.bookimage;
+
 
     // On récupère la collection
     var collection = db.get('bookcollection');
@@ -170,7 +184,8 @@ router.post('/addbook', function(req, res) {
 		"bookannee" : bookAnnee,
 		"bookediteur" : bookEditeur,
 		"bookvendeur" : bookVendeur,
-		"bookprix" : bookPrix		
+		"bookprix" : bookPrix,	
+        "bookimage"	:bookImage
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur
