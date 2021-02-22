@@ -14,6 +14,7 @@ block content
 					p Editeur : #{book.bookediteur}
 					p Vendeur : #{book.bookvendeur}
 					p Prix :    #{book.bookprix} €
-					p.button(onclick="Reservation()") Réserver
+					- var titre = book.booktitre
+					p.button(onclick='Reservation('+titre+',2,3)') Réserver
 				.column2
 					img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')
