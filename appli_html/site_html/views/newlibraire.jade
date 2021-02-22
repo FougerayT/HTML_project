@@ -3,11 +3,11 @@ extends layout
 block content
 	h1 Remplissez ces informations afin de créer votre compte
 	form#formAddLibraire(name="addlibraire",method="post",action="/addlibraire")
-		input#inputLibraireSociete(type="text", placeholder="Societe", name="librairesociete")
-		input#inputLibraireLogin(type="text", placeholder="Login", name="librairelogin")
-		input#inputLibrairePassword(type="password", placeholder="Mot de passe", name="librairepassword")
-		input#inputLibraireEmail(type="text", placeholder="Email", name="libraireemail")
-		input#inputLibraireTelephone(type="text", placeholder="Telephone", name="librairetelephone")
-		input#inputLibraireAdresse(type="text", placeholder="Adresse", name="libraireadresse")
+		input#inputLibraireSociete(type="text", placeholder="Societe", name="librairesociete", required='')
+		input#inputLibraireLogin(type="text", placeholder="Login", name="librairelogin", required='')
+		input#inputLibrairePassword(type="password", placeholder="Mot de passe", name="librairepassword", required='')
+		input#inputLibraireEmail(type="text", placeholder="Email", name="libraireemail", required='')
+		input#inputLibraireTelephone(type="text", placeholder="Telephone", name="librairetelephone", required='')
+		input#inputLibraireAdresse(type="text", placeholder="Adresse", name="libraireadresse", required='')
 		
 		button#btnSubmit(type="submit") submit 
