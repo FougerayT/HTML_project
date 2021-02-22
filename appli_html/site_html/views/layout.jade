@@ -46,9 +46,8 @@ script.
 		function signup() { 
 		window.location.href = '/signup'
 	}
-	
-		function Reservation() {
-		window.location.href = '/reservation'
+		function Reservation(titre,vendeur,prix) {
+		window.location.href = '/reservation?t='+titre
 	}
 	function sortListDir() {
 		var list, i, switching, b, shouldSwitch, dir, switchcount = 0;

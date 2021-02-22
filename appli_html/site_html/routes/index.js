@@ -23,7 +23,11 @@ router.get('/signup', function(req, res) {
 
 /*__________________________________________________RESERVATION__________________________________________________*/
 router.get('/reservation', function(req, res) {
-    res.render('reservation', { title: 'reservation' });
+	console.log('cc');
+	var titre=req.query.t;
+	var vendeur=req.query.v;
+	var prix=req.query.p;
+    res.render('reservation', { title: titre , vendeur: vendeur});
 });
 
 /*___________________________________________________LIBRAIRES___________________________________________________*/
