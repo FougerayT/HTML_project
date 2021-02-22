@@ -1,8 +1,7 @@
 extends layout
 
 block content
-	h1= title
-	h1= vendeur
-	p Votre réservation de Tintin en Amérique est validée.
-	p Retrouvez votre livre à la Librairie Café Myriagone au 16 rue Bodinier, 49100 Angers.
-	p Présentez une pièce d'identité afin de récupérer votre livre pour un montant de 10€.
+	h1 Réservation réussie
+	p Votre réservation de <em>#{titre}</em> est validée.
+	p Retrouvez votre livre à la #{vendeur} au 16 rue Bodinier, 49100 Angers.
+	p Présentez une pièce d'identité afin de récupérer votre livre pour un montant de #{prix}€.

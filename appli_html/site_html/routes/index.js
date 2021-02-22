@@ -27,7 +27,7 @@ router.get('/reservation', function(req, res) {
 	var titre=req.query.t;
 	var vendeur=req.query.v;
 	var prix=req.query.p;
-    res.render('reservation', { title: titre , vendeur: vendeur});
+    res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix});
 });
 
 /*___________________________________________________LIBRAIRES___________________________________________________*/
