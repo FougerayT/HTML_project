@@ -20,7 +20,6 @@ router.get('/signup', function(req, res) {
     res.render('signup', { title: 'signup' });
 });
 
-
 /*__________________________________________________RESERVATION__________________________________________________*/
 router.get('/reservation', function(req, res) {
 	console.log('cc');
@@ -34,7 +33,25 @@ router.get('/reservation', function(req, res) {
 		res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix, "libraire_res": docs[0].libraireadresse});
     });
 });
-
+/*__________________________________________________CONNEXION_________________________*/
+/*POST pour se connecter*/
+router.post('/connect',function(res,req){
+	var mail=req.body.email;
+	var passwd=req.body.mdp;
+	for(const client in clientlist){
+		if(client.clientemail==mail && client.clientpassword==passwd){
+				var loggedin=1;
+				var nom=client.clientnom;
+				var prenom=client.clientprenom;	
+		}
+	}
+	for(const libraire in librairelist){
+		if(libraire.libraireemail==mail && libraire.librairepassword==passwd){
+				var loggedin=2;
+				var societe=libraire.librairesociete;
+		};
+	};
+});
 /*___________________________________________________LIBRAIRES___________________________________________________*/
 /* GET pour afficher la liste des libraires */
 router.get('/librairelist', function(req, res) {
