@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var loggedin = 0;
+var login;
+var prenom;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,17 +10,17 @@ router.get('/', function(req, res, next) {
     var collection = db.get('bookcollection');
     collection.find({},{},function(e,docs){
         res.render('index', {
-            "booklist" : docs
+            "booklist" : docs,"loggedin" : loggedin, "login" : login 
         });
     });
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { title: 'login' });
+    res.render('login', { title: 'login',"loggedin" : loggedin, "login" : login  });
 });
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { title: 'signup' });
+    res.render('signup', { title: 'signup',"loggedin" : loggedin, "login" : login  });
 });
 
 /*__________________________________________________RESERVATION__________________________________________________*/
@@ -28,29 +31,84 @@ router.get('/reservation', function(req, res) {
 	var prix=req.query.p;
 	var db = req.db;
 	var collection = db.get('librairecollection');
-    collection.find({'librairesociete':vendeur},{},function(e,docs){
+	collection.find({'librairesociete':vendeur},{},function(e,docs){
         console.log(docs[0].libraireadresse);
-		res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix, "libraire_res": docs[0].libraireadresse});
-    });
+		res.render('reservation', { titre: titre , vendeur: vendeur, prix: prix, "libraire_res": docs[0].libraireadresse,"loggedin" : loggedin, "login" : login });
+	var nodemailer = require('nodemailer');
+
+	var transporter = nodemailer.createTransport({
+	  service: 'gmail',
+	  auth: {
+		user: 'contact.libcovid@gmail.com',
+		pass: 'libcovid_49'
+	  }
+	});
+
+	var mailOptions = {
+	  from: 'contact.libcovid@gmail.com',
+	  to: docs[0].libraireemail,
+	  subject: 'Nouvelle réservation d\'un de vos livres !',
+	  html: '<h3>Bonjour</h3><p>Yann a réservé votre livre : <em>'+ titre + '</em> au prix de ' + prix + '€.</p><p>Pensez à vérifier la pièce d\'identité de l\'acheteur.</p><p></p><p>Cordialement</p><p></p><p>L\'équipe LibCovid\'</p>'
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+	  if (error) {
+		console.log(error);
+	  } else {
+		console.log('Email sent: ' + info.response);
+	  }
+	});
+	});
 });
 /*__________________________________________________CONNEXION_________________________*/
 /*POST pour se connecter*/
-router.post('/connect',function(res,req){
+/*__CONNEXION_*/
+/*POST pour se connecter*/
+router.post('/connect',function(req,res){
+	var db = req.db;
+
 	var mail=req.body.email;
 	var passwd=req.body.mdp;
-	for(const client in clientlist){
-		if(client.clientemail==mail && client.clientpassword==passwd){
-				var loggedin=1;
-				var nom=client.clientnom;
-				var prenom=client.clientprenom;	
+	var i = 0;
+	var j = 0;
+	console.log("__test1__");
+
+	var collection = db.get('clientcollection');
+	collection.find({},{},function(e,docs){
+		for(const client in docs){
+			if(docs[i].clientemail==mail && docs[i].clientpassword==passwd){
+				loggedin=1;
+				login=docs[i].clientnom + " " + docs[i].clientprenom;
+				prenom=docs[i].clientprenom;
+			}
+			i = i + 1;
 		}
-	}
-	for(const libraire in librairelist){
-		if(libraire.libraireemail==mail && libraire.librairepassword==passwd){
-				var loggedin=2;
-				var societe=libraire.librairesociete;
+	});
+
+	var collection = db.get('librairecollection');
+	collection.find({},{},function(e,docs){
+		for(const libraire in docs){
+			console.log("__test4__");
+			if(docs[j].libraireemail==mail && docs[j].librairepassword==passwd){
+				loggedin=2;
+				login=docs[j].librairesociete;
+			};
+			j = j + 1;
 		};
-	};
+	});
+
+	res.location("librairelist");
+	res.redirect("librairelist");
+	res.render('', {"loggedin" : loggedin, "login" : login});
+});
+
+
+/*___________________________________________________DECONNEXION___________________________________________________*/
+/* GET deconnexion */
+router.get('/deco', function(req, res) {
+	loggedin = 0;
+	login = "";
+	res.render('login', {"loggedin" : loggedin, "login" : login });
 });
 /*___________________________________________________LIBRAIRES___________________________________________________*/
 /* GET pour afficher la liste des libraires */
@@ -59,14 +117,14 @@ router.get('/librairelist', function(req, res) {
     var collection = db.get('librairecollection');
     collection.find({},{},function(e,docs){
         res.render('librairelist', {
-            "librairelist" : docs
+            "librairelist" : docs,"loggedin" : loggedin, "login" : login 
         });
     });
 });
 
 /* GET page pour un nouvel libraire. */
 router.get('/newlibraire', function(req, res) {
-    res.render('newlibraire', { title: 'Add New Libraire' });
+    res.render('newlibraire', { title: 'Add New Libraire', "loggedin" : loggedin, "login" : login  });
 });
 
 /* POST pour ajouter un libraire */
@@ -114,14 +172,14 @@ router.get('/clientlist', function(req, res) {
     var collection = db.get('clientcollection');
     collection.find({},{},function(e,docs){
         res.render('clientlist', {
-            "clientlist" : docs
+            "clientlist" : docs, "loggedin" : loggedin, "login" : login 
         });
     });
 });
 
 /* GET page pour un nouvel client. */
 router.get('/newclient', function(req, res) {
-    res.render('newclient', { title: 'Add New Client' });
+    res.render('newclient', { title: 'Add New Client', "loggedin" : loggedin, "login" : login  });
 });
 
 /* POST pour ajouter un client */
@@ -171,14 +229,14 @@ router.get('/booklist', function(req, res) {
     var collection = db.get('bookcollection');
     collection.find({},{},function(e,docs){
         res.render('booklist', {
-            "booklist" : docs
+            "booklist" : docs, "loggedin" : loggedin, "login" : login 
         });
     });
 });
 
 /* GET page pour un nouveau livre */
 router.get('/newbook', function(req, res) {
-    res.render('newbook', { title: 'Add New Book' });
+    res.render('newbook', { title: 'Add New Book', "loggedin" : loggedin, "login" : login  });
 });
 
 
@@ -194,7 +252,7 @@ router.post('/addbook', function(req, res) {
 	var bookType = req.body.booktype;
 	var bookAnnee = req.body.bookannee;
 	var bookEditeur = req.body.bookediteur;
-	var bookVendeur = req.body.bookvendeur;
+	var bookVendeur = login;
 	var bookPrix = req.body.bookprix;
     var bookImage = req.body.bookimage;
 
@@ -223,6 +281,17 @@ router.post('/addbook', function(req, res) {
             res.redirect("booklist");
         }
     });
+});
+
+/* GET pour afficher la liste des livres d'un libraire*/
+router.get('/mybook', function(req, res) {
+
+	var db = req.db;
+	var collection = db.get('bookcollection');
+	collection.find({'bookvendeur':login},{},function(e,docs){
+		console.log(docs);
+		res.render('mybook', { 'booklist': docs, "loggedin" : loggedin, "login" : login});
+	});
 });
 
 module.exports = router;
