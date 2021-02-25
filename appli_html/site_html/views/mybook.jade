@@ -14,7 +14,6 @@ block content
 					p Editeur : #{book.bookediteur}
 					p Vendeur : #{book.bookvendeur}
 					p Prix :    #{book.bookprix} €
-					p Prix :    #{book.bookprix} €
-					p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Supprimer
+					p.button(onclick=`Suppression(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Supprimer
 				.column2
 					img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')
