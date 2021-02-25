@@ -103,6 +103,17 @@ router.get('/mybook', function(req, res) {
     });
 });
 
+/* GET pour afficher la liste des livres d'un libraire*/
+router.get('/mybook', function(req, res) {
+	
+	var db = req.db;
+	var collection = db.get('bookcollection');
+    collection.find({'bookvendeur':"Librairie La Nuit des temps"},{},function(e,docs){
+        console.log(docs);
+		res.render('mybook', { 'booklist': docs});
+    });
+});
+
 /* GET page pour un nouveau livre */
 router.get('/newbook', function(req, res) {
     res.render('newbook', { title: 'Add New Book' });
