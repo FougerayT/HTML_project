@@ -1,6 +1,7 @@
 extends layout
 
 block content
+<<<<<<< Updated upstream
 	h1	 Veuillez vous connectez
 	form#formConnexion(name="addbook",method="post",action="/addbook")
 		input#inputLogin(type="text", placeholder="Email", name="email", required='')
@@ -14,3 +15,10 @@ block content
 		br
 		button#btnSubmit(type="submit") Connexion
 		
+=======
+	h1 Veuillez vous connectez
+	form#formConnection(name="connect",method="post",action="/connect")
+		input#inputConnectMail(type="text", placeholder="Email", name="email")
+		input#inputConnectPassword(type="password", placeholder="Mot de passe", name="mdp")
+		button#btnSubmit(type="submit") Connexion
+>>>>>>> Stashed changes

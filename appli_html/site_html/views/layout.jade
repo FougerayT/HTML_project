@@ -8,6 +8,7 @@ html
 		div
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			div.button(onclick="newuser()") Nouveau libraire
 			div.button(onclick="listuser()") Liste des libraires
 =======
@@ -31,6 +32,20 @@ html
 			div(style="position: relative; float: right;").button(onclick="login()") Connexion
 			div(style="position: relative; float: right;").button(onclick="signup()") Inscription
 >>>>>>> Stashed changes
+=======
+			div.button(onclick="home()") Accueil
+			div.button(onclick="listlibraire()") Liste des libraires
+			div.button(onclick="listbook()") Liste des livres
+			if loggedin == 2
+				div.button(onclick="newbook()") Nouveau livre
+			if loggedin == 2
+				div.button(onclick="mybook()") Mes livres
+			if loggedin != 1 && loggedin != 2
+				div(style="position: relative; float: right;").button(onclick="login()") Connexion
+				div(style="position: relative; float: right;").button(onclick="signup()") Inscription
+			else 
+				div(style="position: relative; float: right;").button(onclick="deco()") #{login} : Deconnexion
+>>>>>>> Stashed changes
 	body
 		block content
 
@@ -49,6 +64,7 @@ script.
 	}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 =======
 >>>>>>> Stashed changes
@@ -56,10 +72,19 @@ script.
 		window.location.href = '/mybook'
 	}
 	function login() { 
+=======
+		function mybook() {
+		window.location.href = '/mybook'
+	}
+		function login() { 
+>>>>>>> Stashed changes
 		window.location.href = '/login'
 	}
 	function signup() { 
 		window.location.href = '/signup'
+	}
+		function deco() { 
+		window.location.href = '/deco'
 	}
 		function Reservation(titre,vendeur,prix) {
 		window.location.href = '/reservation?t='+titre+'&v='+vendeur+'&p='+prix

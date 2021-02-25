@@ -12,9 +12,13 @@ block content
 					p Type :    #{book.booktype}
 					p Année :   #{book.bookannee}
 					p Editeur : #{book.bookediteur}
+<<<<<<< Updated upstream
 					p Vendeur : #{book.bookvendeur}
 					p Prix :    #{book.bookprix} €
 					- titre = book.booktitre
+=======
+					p Prix :    #{book.bookprix} €
+>>>>>>> Stashed changes
 					p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Supprimer
 				.column2
 					img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')

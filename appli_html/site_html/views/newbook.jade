@@ -1,6 +1,7 @@
 extends layout
 
 block content
+<<<<<<< Updated upstream
 	h1= title
 	form#formAddBook(name="addbook",method="post",action="/addbook")
 		input#inputbookTitre(type="text", placeholder="booktitre", name="booktitre")
@@ -13,6 +14,20 @@ block content
 		button#btnImage(onclick="navigateur()") Image
 	button#btnSubmit(type="submit") submit
 	
+=======
+	h1 Ajouter un nouveau livre
+	form#formAddBook(name="addbook",method="post",action="/addbook", required='')
+		input#inputbookTitre(type="text", placeholder="Titre", name="booktitre", required='')
+		input#inputbookAuteur(type="text", placeholder="Auteur", name="bookauteur", required='')
+		input#inputbookType(type="text", placeholder="Type", name="booktype", required='')
+		input#inputbookAnnee(type="text", placeholder="Annee", name="bookannee", required='')
+		input#inputbookEditeur(type="text", placeholder="Editeur", name="bookediteur", required='')
+		input#inputbookVendeur(type="text", placeholder="Vendeur", name="bookvendeur", required='')
+		input#inputbookPrix(type="text", placeholder="Prix", name="bookprix", required='')
+		input#inputbookPrix(type="text", placeholder="Nom de Image", name="bookimage", required='')
+		
+		button#btnSubmit(type="submit") submit
+>>>>>>> Stashed changes
 script.
 	function navigateur() {
 
