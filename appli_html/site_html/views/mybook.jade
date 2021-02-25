@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	h1 Liste des livres
+	p.button(onclick="sortListDir()") Tri(A-Z)(Z-A)
+	ul#id01.row
+		each book, i in booklist
+			li.column 
+				.column2
+					h2 #{book.booktitre.toUpperCase()}
+					p Auteur :  #{book.bookauteur}
+					p Type :    #{book.booktype}
+					p Année :   #{book.bookannee}
+					p Editeur : #{book.bookediteur}
+					p Vendeur : #{book.bookvendeur}
+					p Prix :    #{book.bookprix} €
+					p Prix :    #{book.bookprix} €
+					p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Supprimer
+				.column2
+					img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')

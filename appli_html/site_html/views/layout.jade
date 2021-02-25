@@ -7,14 +7,17 @@ html
 			h1 Lib'Covid
 		div
 			div.button(onclick="home()") Accueil
-			div.button(onclick="newlibraire()") Nouveau libraire
 			div.button(onclick="listlibraire()") Liste des libraires
-			div.button(onclick="newclient()") Nouveau client
-			div.button(onclick="clientlist()") Liste clients
-			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
-			div(style="position: relative; float: right;").button(onclick="login()") Connexion
-			div(style="position: relative; float: right;").button(onclick="signup()") Inscription
+			if loggedin == 2
+				div.button(onclick="newbook()") Nouveau livre
+			if loggedin == 2
+				div.button(onclick="mybook()") Mes livres
+			if loggedin != 1 && loggedin != 2
+				div(style="position: relative; float: right;").button(onclick="login()") Connexion
+				div(style="position: relative; float: right;").button(onclick="signup()") Inscription
+			else 
+				div(style="position: relative; float: right;").button(onclick="deco()") #{login} : Deconnexion
 	body
 		block content
 
@@ -40,8 +43,15 @@ script.
 		function listbook() {
 		window.location.href = '/booklist'
 	}
+	
+		function mybook() {
+		window.location.href = '/mybook'
+	}
 		function login() { 
 		window.location.href = '/login'
+	}
+		function deco() { 
+		window.location.href = '/deco'
 	}
 		function signup() { 
 		window.location.href = '/signup'

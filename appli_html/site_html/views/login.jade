@@ -1,8 +1,8 @@
 extends layout
 
 block content
-	h1	 Veuillez vous connectez
+	h1 Veuillez vous connecter
 	form#formConnection(name="connect",method="post",action="/connect")
 		input#inputConnectMail(type="text", placeholder="Email", name="email")
 		input#inputConnectPassword(type="password", placeholder="Mot de passe", name="mdp")
-		div.button(onclick="home()") Connexion
+		button#btnSubmit(type="submit") Connexion
