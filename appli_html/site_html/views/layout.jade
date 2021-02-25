@@ -7,6 +7,7 @@ html
 			h1 Lib'Covid
 		div
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			div.button(onclick="newuser()") Nouveau libraire
 			div.button(onclick="listuser()") Liste des libraires
 =======
@@ -17,6 +18,19 @@ html
 >>>>>>> Stashed changes
 			div.button(onclick="newbook()") Nouveau livre
 			div.button(onclick="listbook()") Liste des livres
+=======
+			- var boolean = true
+			if boolean
+				div.button(onclick="home()") Accueil
+			div.button(onclick="listlibraire()") Liste libraires
+			div.button(onclick="listclient()") Liste clients
+			div.button(onclick="newclient()") Nouveau client
+			div.button(onclick="newbook()") Nouveau livre
+			div.button(onclick="listbook()") Liste des livres
+			div.button(onclick="mybook()") Mes livres
+			div(style="position: relative; float: right;").button(onclick="login()") Connexion
+			div(style="position: relative; float: right;").button(onclick="signup()") Inscription
+>>>>>>> Stashed changes
 	body
 		block content
 
@@ -33,3 +47,69 @@ script.
 		function listbook() {
 		window.location.href = '/booklist'
 	}
+<<<<<<< Updated upstream
+=======
+	function mybook() {
+		window.location.href = '/mybook'
+	}
+	function login() { 
+		window.location.href = '/login'
+	}
+	function signup() { 
+		window.location.href = '/signup'
+	}
+		function Reservation(titre,vendeur,prix) {
+		window.location.href = '/reservation?t='+titre+'&v='+vendeur+'&p='+prix
+	}
+	function sortListDir() {
+		var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+		list = document.getElementById("id01");
+		switching = true;
+		// Set the sorting direction to ascending:
+		dir = "asc";
+		// Make a loop that will continue until no switching has been done:
+		while (switching) {
+			// start by saying: no switching is done:
+			switching = false;
+			b = list.getElementsByTagName("LI");
+			// Loop through all list-items:
+			for (i = 0; i < (b.length - 1); i++) {
+				//start by saying there should be no switching:
+				shouldSwitch = false;
+				/* check if the next item should switch place with the current item,
+				based on the sorting direction (asc or desc): */
+				if (dir == "asc") {
+					if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+						/* if next item is alphabetically lower than current item,
+						mark as a switch and break the loop: */
+						shouldSwitch = true;
+						break;
+					}
+				}
+				else if (dir == "desc") {
+					if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+						/* if next item is alphabetically higher than current item,
+						mark as a switch and break the loop: */
+						shouldSwitch= true;
+						break;
+					}
+				}
+			}
+			if (shouldSwitch) {
+				/* If a switch has been marked, make the switch
+				and mark that a switch has been done: */
+				b[i].parentNode.insertBefore(b[i + 1], b[i]);
+				switching = true;
+				// Each time a switch is done, increase switchcount by 1:
+				switchcount ++;
+			} else {
+				/* If no switching has been done AND the direction is "asc",
+				set the direction to "desc" and run the while loop again. */
+				if (switchcount == 0 && dir == "asc") {
+					dir = "desc";
+					switching = true;
+				}
+			}
+		}
+	}
+>>>>>>> Stashed changes
