@@ -60,9 +60,21 @@ router.get('/reservation', function(req, res) {
 	});
 	});
 });
+/*_________________________________________________SUPPRESSION___________________________*/
+router.get('/suppression', function(req, res) {
+	var titre=req.query.t;
+	var vendeur=decodeURIComponent(req.query.v);
+	var db = req.db;
+	var collection = db.get('bookcollection');
+	console.log("__testoui__");
+	collection.remove({'bookvendeur': vendeur, 'booktitre':titre}, function(e,docs){
+		collection.find({'bookvendeur':login},{},function(e,docs){
+			res.render('mybook', { 'booklist': docs, "loggedin" : loggedin, "login" : login});
+		});
+	});
+	console.log("__testnon__");
+});
 /*__________________________________________________CONNEXION_________________________*/
-/*POST pour se connecter*/
-/*__CONNEXION_*/
 /*POST pour se connecter*/
 router.post('/connect',function(req,res){
 	var db = req.db;
@@ -222,7 +234,7 @@ router.post('/addclient', function(req, res) {
     });
 });
 
-/*___________________________________________________BOOKS___________________________________________________*/
+/*___________________________________________________BOOKS_____________________________________________________________*/
 /* GET pour afficher la liste des livres */
 router.get('/booklist', function(req, res) {
     var db = req.db;
