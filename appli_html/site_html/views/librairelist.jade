@@ -5,8 +5,9 @@ block content
 		Liste des libraires
 	ul
 		each libraire, i in librairelist
-			li.column 
-				h2 #{libraire.librairesociete.toUpperCase()}
-				p Adresse :  #{libraire.libraireadresse}
-				p Mail :    #{libraire.libraireemail}
-				p Téléphone :   #{libraire.librairetelephone}
+			if libraire != null
+				li.column 
+					h2 #{libraire.librairesociete.toUpperCase()}
+					p Adresse :  #{libraire.libraireadresse}
+					p Mail :    #{libraire.libraireemail}
+					p Téléphone :   #{libraire.librairetelephone}
