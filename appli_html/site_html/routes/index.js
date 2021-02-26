@@ -1,5 +1,13 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< Updated upstream
+=======
+var loggedin = 0;
+var login;
+const multer = require('multer');
+const path = require('path');
+const { PassThrough } = require('nodemailer/lib/xoauth2');
+>>>>>>> Stashed changes
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -74,14 +82,44 @@ router.get('/newbook', function(req, res) {
     res.render('newbook', { title: 'Add New Book' });
 });
 
+/*
+// Public Folder 
+router.use(express.static('./public'));
+
+//enregistrement image dans dossier 
+const storage = multer.diskStorage({
+	destination: './public/upload/',
+	filename: function(req,file,cb){
+		cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+});
+
+//init upload 
+const upload = multer({
+	storage : storage
+}).single('bookimage');
+*/
 
 /* POST pour ajouter un livre */
 router.post('/addbook', function(req, res) {
 
-    // On positionne la variable db sur la base de données
-    var db = req.db;
+	// On positionne la variable db sur la base de données
+
+	/*
+	upload(req,res,(err)=>{
+		if(err){
+			res.render('there is an error')}
+		else{
+			console.log(req.file);
+		}
+	})
+	*/
+	
+	var db = req.db;
+
 
     // On récupère les données du formulaire
+
 	var bookTitre = req.body.booktitre;
 	var bookAuteur = req.body.bookauteur;
 	var bookType = req.body.booktype;
@@ -89,6 +127,12 @@ router.post('/addbook', function(req, res) {
 	var bookEditeur = req.body.bookediteur;
 	var bookVendeur = req.body.bookvendeur;
 	var bookPrix = req.body.bookprix;
+<<<<<<< Updated upstream
+=======
+    var bookImage = req.body.bookimage;
+	console.log(bookTitre);
+
+>>>>>>> Stashed changes
 
     // On récupère la collection
     var collection = db.get('bookcollection');
@@ -101,7 +145,12 @@ router.post('/addbook', function(req, res) {
 		"bookannee" : bookAnnee,
 		"bookediteur" : bookEditeur,
 		"bookvendeur" : bookVendeur,
+<<<<<<< Updated upstream
 		"bookprix" : bookPrix		
+=======
+		"bookprix" : bookPrix,	
+        "bookimage"	: bookImage
+>>>>>>> Stashed changes
     }, function (err, doc) {
         if (err) {
             // En cas de problème, on renvoie une erreur

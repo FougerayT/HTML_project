@@ -5,6 +5,7 @@ block content
 		Book List
 	ul
 		each book, i in booklist
+<<<<<<< Updated upstream
 			nav#header.navbar.navbar-inverse.navbar-fixed_top
 				.container
 					.navbar-header
@@ -23,3 +24,22 @@ script.
 	function detailsBook() {
 		window.location.href = '/userlist'
 	}
+=======
+			li.column 
+				.column2
+					h2 #{book.booktitre.toUpperCase()}
+					p Auteur :  #{book.bookauteur}
+					p Type :    #{book.booktype}
+					p Année :   #{book.bookannee}
+					p Editeur : #{book.bookediteur}
+					p Vendeur : #{book.bookvendeur}
+					p Prix :    #{book.bookprix} €
+					p Image :   #{book.image} 
+
+					
+					- titre = book.booktitre
+					p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Réserver
+				.column2
+
+					img.logo(src='https://www.casimages.com/i/210225082131124008.jpg' height="300" width="200" alt='My_Logo')
+>>>>>>> Stashed changes
