@@ -2,6 +2,10 @@ extends layout
 
 block content
 	h1 Ajouter un nouveau livre
+	form#formAddImage(name="addimage",method="post",action="/addimage", required='',enctype='multipart/form-data')
+		input#inputbookImage(type="file", placeholder="Nom de Image", name="imagename", required='', accept='.jpg, .jpeg, .png')            
+		button#btnSubmit(type="submit") Télécharger l'image
+	
 	form#formAddBook(name="addbook",method="post",action="/addbook", required='')
 		input#inputbookTitre(type="text", placeholder="Titre", name="booktitre", required='')
 		input#inputbookAuteur(type="text", placeholder="Auteur", name="bookauteur", required='')
@@ -9,9 +13,7 @@ block content
 		input#inputbookAnnee(type="text", placeholder="Annee", name="bookannee", required='')
 		input#inputbookEditeur(type="text", placeholder="Editeur", name="bookediteur", required='')
 		input#inputbookPrix(type="text", placeholder="Prix", name="bookprix", required='')
-		input#inputbookPrix(type="text", placeholder="Nom de Image", name="bookimage", required='')
 
-		
 		button#btnSubmit(type="submit") submit
 	
 script.

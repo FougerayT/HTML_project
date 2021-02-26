@@ -4,6 +4,9 @@ var loggedin = 0;
 var login;
 var prenom;
 
+const multer = require('multer');
+const path = require('path');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var db = req.db;
@@ -260,6 +263,35 @@ router.get('/newbook', function(req, res) {
 });
 
 
+// Public Folder 
+router.use(express.static('./public'));
+
+//enregistrement image dans dossier 
+const storage = multer.diskStorage({
+    destination: './public/images/',
+    filename: function(req,file,cb){
+        cb(null,file.originalname);
+        global.imagename = file.originalname
+    }
+});
+
+//init upload 
+const upload = multer({
+    storage : storage
+}).single('imagename');
+
+router.post('/addimage', function(req, res) {
+    upload(req,res,(err)=>{
+        if(err){
+            res.render('there is an error')}
+        else{
+            console.log(req.file);
+        }
+    })
+});
+
+
+
 /* POST pour ajouter un livre */
 router.post('/addbook', function(req, res) {
 
@@ -274,7 +306,7 @@ router.post('/addbook', function(req, res) {
 	var bookEditeur = req.body.bookediteur;
 	var bookVendeur = login;
 	var bookPrix = req.body.bookprix;
-    var bookImage = req.body.bookimage;
+    var bookImage = global.imagename;
 
 
     // On récupère la collection
