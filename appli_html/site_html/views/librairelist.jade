@@ -11,3 +11,4 @@ block content
 					p Adresse :  #{libraire.libraireadresse}
 					p Mail :    #{libraire.libraireemail}
 					p Téléphone :   #{libraire.librairetelephone}
+					p.button(onclick=`LivreLibraire(${JSON.stringify(libraire.librairesociete)})`) Voir livres

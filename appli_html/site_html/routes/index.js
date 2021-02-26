@@ -177,6 +177,19 @@ router.post('/addlibraire', function(req, res) {
     });
 });
 
+/* GET page pour un livre d'un libraire. */
+router.get('/livrelib', function(req, res) {
+	console.log("__testnon__");
+	var vendeur=req.query.v;
+	
+	var db = req.db;
+	var collection = db.get('bookcollection');
+	collection.find({'bookvendeur':vendeur},{},function(e,docs){
+        console.log(docs);
+		res.render('booklist', {"booklist" : docs, "loggedin" : loggedin, "login" : login });
+	});
+});
+
 /*___________________________________________________CLIENTS___________________________________________________*/
 /* GET pour afficher la liste des clients */
 router.get('/clientlist', function(req, res) {

@@ -61,6 +61,9 @@ script.
 		function Suppression(titre,vendeur){
 		window.location.href= '/suppression?t='+titre+'&v='+vendeur
 	}
+	function LivreLibraire(vendeur){
+		window.location.href= '/livrelib?v='+vendeur
+	}
 	function sortListDir() {
 		var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
 		list = document.getElementById("id01");
