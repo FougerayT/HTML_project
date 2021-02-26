@@ -9,6 +9,9 @@ const path = require('path');
 const { PassThrough } = require('nodemailer/lib/xoauth2');
 >>>>>>> Stashed changes
 
+const multer = require('multer');
+const path = require('path');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -77,11 +80,37 @@ router.get('/booklist', function(req, res) {
     });
 });
 
+//enregistrement image dans dossier 
+const storage = multer.diskStorage({
+	destination: './public/images/',
+	filename: function(req,file,cb){
+		cb(null,file.originalname);
+		global.imagename = file.originalname
+	}
+});
+
+//init upload 
+const upload = multer({
+	storage : storage
+}).single('bookimage');
+
+router.post('/addimage', function(req, res) {
+	upload(req,res,(err)=>{
+		if(err){
+			res.render('there is an error')}
+		else{
+			console.log(req.file);
+		}
+	})
+});
+
+
 /* GET page pour un nouveau livre */
 router.get('/newbook', function(req, res) {
     res.render('newbook', { title: 'Add New Book' });
 });
 
+<<<<<<< Updated upstream
 /*
 // Public Folder 
 router.use(express.static('./public'));
@@ -99,6 +128,14 @@ const upload = multer({
 	storage : storage
 }).single('bookimage');
 */
+=======
+// Public Folder 
+router.use(express.static('./public'));
+
+
+
+
+>>>>>>> Stashed changes
 
 /* POST pour ajouter un livre */
 router.post('/addbook', function(req, res) {
@@ -128,9 +165,13 @@ router.post('/addbook', function(req, res) {
 	var bookVendeur = req.body.bookvendeur;
 	var bookPrix = req.body.bookprix;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     var bookImage = req.body.bookimage;
 	console.log(bookTitre);
+=======
+    var bookImage = global.imagename;
+>>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
 
