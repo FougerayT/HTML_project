@@ -8,13 +8,14 @@ block content
 			if book != null
 				li.column 
 					.column2
-						h2 #{book.booktitre}
+						h2 #{book.booktitre.toUpperCase()}
 						p Auteur :  #{book.bookauteur}
 						p Type :    #{book.booktype}
 						p Année :   #{book.bookannee}
 						p Editeur : #{book.bookediteur}
 						p Vendeur : #{book.bookvendeur}
 						p Prix :    #{book.bookprix} €
-						p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Réserver
+						if loggedin == 1
+							p.button(onclick=`Reservation(${JSON.stringify(book.booktitre)},${JSON.stringify(book.bookvendeur)},${JSON.stringify(book.bookprix)})`) Réserver
 					.column2
 						img.logo(src='http://localhost:3000/stylesheets/images/' + '#{book.bookimage}' height="300" width="200" alt='My_Logo')
