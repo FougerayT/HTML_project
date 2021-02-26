@@ -179,7 +179,6 @@ router.post('/addlibraire', function(req, res) {
 
 /* GET page pour un livre d'un libraire. */
 router.get('/livrelib', function(req, res) {
-	console.log("__testnon__");
 	var vendeur=req.query.v;
 	
 	var db = req.db;
@@ -310,12 +309,23 @@ router.post('/addbook', function(req, res) {
 
 /* GET pour afficher la liste des livres d'un libraire*/
 router.get('/mybook', function(req, res) {
-
 	var db = req.db;
 	var collection = db.get('bookcollection');
 	collection.find({'bookvendeur':login},{},function(e,docs){
 		console.log(docs);
 		res.render('mybook', { 'booklist': docs, "loggedin" : loggedin, "login" : login});
+	});
+});
+
+/* GET page pour un livre recherché. */
+router.post('/recherche',function(req,res){
+	var titre=req.body.recherchetitre;
+	console.log(titre);
+	var db = req.db;
+	var collection = db.get('bookcollection');
+	collection.find({'booktitre':titre},{},function(e,docs){
+        console.log(docs);
+		res.render('booklist', {"booklist" : docs, "loggedin" : loggedin, "login" : login });
 	});
 });
 

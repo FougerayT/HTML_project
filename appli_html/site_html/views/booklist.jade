@@ -2,7 +2,12 @@ extends layout
 
 block content
 	h1 Liste des livres
-	p.button(onclick="sortListDir()") Tri(A-Z)(Z-A)
+	.column2
+		p.button(onclick="sortListDir()") Tri(A-Z)(Z-A)
+	.column2
+		form#formRecherche(name="recherche",method="post",action="/recherche", required='')
+			input#inputRecherche(type="text", placeholder="Rechercher livre", name="recherchetitre", required='')				
+			button#btnSubmit(type="submit") Rechercher
 	ul#id01.row
 		each book, i in booklist
 			if book != null
