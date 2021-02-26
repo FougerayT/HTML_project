@@ -14,10 +14,10 @@ html
 			if loggedin == 2
 				div.button(onclick="mybook()") Mes livres
 			if loggedin != 1 && loggedin != 2
-				div(style="position: relative; float: right;").button(onclick="login()") Connexion
-				div(style="position: relative; float: right;").button(onclick="signup()") Inscription
-			else 
-				div(style="position: relative; float: right;").button(onclick="deco()") #{login} : Deconnexion
+				div.button(style="position: relative; float: right;", onclick="login()") Connexion
+				div.button(style="position: relative; float: right;", onclick="signup()") Inscription
+			else
+				div.button(style="position: relative; float: right;", onclick="deco()") #{login} : Deconnexion
 	body
 		block content
 
