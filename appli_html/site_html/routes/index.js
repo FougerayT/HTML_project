@@ -147,7 +147,6 @@ router.post('/addlibraire', function(req, res) {
 
     // On récupère les données du formulaire
 	var libraireSociete = req.body.librairesociete;
-	var libraireLogin = req.body.librairelogin;
 	var librairePassword = req.body.librairepassword;
 	var libraireEmail = req.body.libraireemail;
 	var libraireTelephone = req.body.librairetelephone;
@@ -159,7 +158,6 @@ router.post('/addlibraire', function(req, res) {
 	// On insère les données dans la base
     collection.insert({
         "librairesociete" : libraireSociete,
-		"librairelogin" : libraireLogin,
 		"librairepassword" : librairePassword,
         "libraireemail" : libraireEmail,
 		"librairetelephone" : libraireTelephone,
@@ -215,7 +213,6 @@ router.post('/addclient', function(req, res) {
     // On récupère les données du formulaire
 	var clientNom = req.body.clientnom;
 	var clientPrenom = req.body.clientprenom;
-	var clientLogin = req.body.clientlogin;
 	var clientPassword = req.body.clientpassword;
 	var clientEmail = req.body.clientemail;
 	var clientTelephone = req.body.clienttelephone;
@@ -228,7 +225,6 @@ router.post('/addclient', function(req, res) {
     collection.insert({
         "clientnom" : clientNom,
 		"clientprenom" : clientPrenom,
-		"clientlogin" : clientLogin,
 		"clientpassword" : clientPassword,
         "clientemail" : clientEmail,
 		"clienttelephone" : clientTelephone,

@@ -8,6 +8,7 @@ block content
 		form#formRecherche(name="recherche",method="post",action="/recherche", required='')
 			input#inputRecherche(type="text", placeholder="Rechercher livre", name="recherchetitre", required='')				
 			button#btnSubmit(type="submit") Rechercher
+	
 	ul#id01.row
 		each book, i in booklist
 			if book != null
